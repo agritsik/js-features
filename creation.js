@@ -32,6 +32,24 @@ userConstructor.run();
 
 
 /**
+ * ECMAScript 5 introduced a new method: Object.create().
+ * Calling this method creates a new object
+ */
+const userProto = {
+  run: () => console.log('Running...')
+};
+
+function userFactory(){
+  console.log(`I'm userFactory` + this);
+  return Object.create(userProto);
+}
+
+var userInstance = userFactory();
+userInstance.run();
+
+
+
+/**
  * ECMAScript 2015 introduced a new set of keywords implementing classes.
  * Although these constructs look like those familiar to developers of class-based languages,
  * they are not the same. JavaScript remains prototype-based.
@@ -48,23 +66,5 @@ class UserClass {
 
 var userClass = new UserClass();
 userClass.run();
-
-
-
-/**
- * ECMAScript 5 introduced a new method: Object.create().
- * Calling this method creates a new object
- */
-const userProto = {
-  run: () => console.log('Running...')
-};
-
-function userFactory(){
-  console.log(`I'm userFactory` + this);
-  return Object.create(userProto);
-}
-
-var userInstance = userFactory();
-userInstance.run();
 
 
