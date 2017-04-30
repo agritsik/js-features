@@ -45,7 +45,33 @@ When function is invoked, current scope chain is not copied for this function: t
 
 JavaScript does not provide a native way of doing this, but it is possible to emulate private methods using closures.
 
-TBD
+Private methods aren't just useful for restricting access to code: they also provide a powerful way of managing your global namespace, keeping non-essential methods from cluttering up the public interface to your code.
+
+```javascriot
+var makeCounter = function() {
+  var privateCounter = 0;
+  function changeBy(val) {
+    privateCounter += val;
+  }
+  return {
+    increment: function() {
+      changeBy(1);
+    },
+    decrement: function() {
+      changeBy(-1);
+    },
+    value: function() {
+      return privateCounter;
+    }
+  }  
+};
+
+var counter1 = makeCounter();
+var counter2 = makeCounter();
+counter1.increment();
+alert(counter1.value()); /* Alerts 1 */
+alert(counter2.value()); /* Alerts 0 */
+```
 
 ## Useful links
 1. https://developer.mozilla.org/en/docs/Web/JavaScript/Closures
