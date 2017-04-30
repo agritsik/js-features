@@ -1,6 +1,9 @@
 # js-features
-Considering different js specific features
 
+Learning javascript...
+
+- [x] Scope and Closure
+- [ ] Prototype and this
 - [ ] Creation
 - [ ] Inheritance
 - [ ] [Destructuring_assignment](http://exploringjs.com/es6/ch_destructuring.html)
