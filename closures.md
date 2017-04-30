@@ -8,7 +8,7 @@ This concept of scope object is very different from, say, C or C++, where local 
 
 As you might expect, scope object might have parent. When the code tries to access some variable, interpreter looks for the property of current scope object. If the property doesn't exist, interpreter moves to the parent scope object, and looks there. And so on, until the value is found, or there's no more parent. Let's call this sequence of scope objects as a **scope chain**
 
-```
+```javascript
 function makeAdder(x) {
   return function(y) {
     return x + y;
@@ -21,6 +21,8 @@ var add10 = makeAdder(10);
 console.log(add5(2));  // 7
 console.log(add10(2)); // 12
 ```
+## Module pattern
+TBD
 
 ## Useful links
 https://developer.mozilla.org/en/docs/Web/JavaScript/Closures
