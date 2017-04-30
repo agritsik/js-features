@@ -4,7 +4,7 @@
 
 Lexical scoping uses the location where a variable is declared within the source code to determine where that variable is available. Nested functions have access to variables declared in their outer scope.
 
-```
+```javascript
 function init() {
   var name = 'Mozilla'; // name is a local variable created by init
   function displayName() { // displayName() is the inner function, a closure
