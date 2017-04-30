@@ -2,9 +2,20 @@
 
 ## Lexical Scope
 
-When you invoke a function that defines local variables, these variables are saved on the **scope object**.
+Lexical scoping uses the location where a variable is declared within the source code to determine where that variable is available. Nested functions have access to variables declared in their outer scope.
 
-Nested functions have access to variables declared in their outer scope.
+```
+function init() {
+  var name = 'Mozilla'; // name is a local variable created by init
+  function displayName() { // displayName() is the inner function, a closure
+    alert(name); // use variable declared in the parent function    
+  }
+  displayName();    
+}
+init();
+```
+
+When you invoke a function that defines local variables, these variables are saved on the **scope object**.
 
 This concept of scope object is very different from, say, C or C++, where local variables are stored on stack. In JavaScript, scope objects are allocated in heap instead (or at least they behave like this), so they might stay allocated even if function already returned. 
 
