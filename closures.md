@@ -15,10 +15,6 @@ function init() {
 init();
 ```
 
-When you invoke a function that defines local variables, these variables are saved on the **scope object**.
-
-This concept of scope object is very different from, say, C or C++, where local variables are stored on stack. In JavaScript, scope objects are allocated in heap instead (or at least they behave like this), so they might stay allocated even if function already returned. 
-
 ## Closures
 
 **Closure** is when a function is able to remember and access its lexical scope even when that function is executing outside its lexical scope.
@@ -37,9 +33,15 @@ console.log(add5(2));  // 7
 console.log(add10(2)); // 12
 ```
 
-When the function is invoked, new scope object is created, which keeps local variables as well as its argument values. This new scope object inherits from the scope object referenced by the function being invoked.
+## Closure under the hood
 
-When function is invoked, current scope chain is not copied for this function: the scope chain is just augmented with new scope object, and when any scope object in the chain is modified by any function, this change is immediately observable by all functions that have this scope object in their scope chains.
+When you invoke a function that defines local variables, these variables are saved on the **scope object**.
+
+When the code tries to access some variable, interpreter looks for the property of current scope object. If the property doesn't exist, interpreter moves to the parent scope object, and looks there. And so on, until the value is found, or there's no more parent. Let's call this sequence of scope objects as a **scope chain**.
+
+What happens when the function is invoked:
+1. new scope object is created, which keeps local variables and argument values. This new scope object inherits from the scope object referenced by the function being invoked.
+1. current scope chain is not copied for this function: the scope chain is just augmented with new scope object, and when any scope object in the chain is modified by any function, this change is immediately observable by all functions that have this scope object in their scope chains.
 
 ## Module pattern
 
