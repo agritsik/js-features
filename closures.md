@@ -49,7 +49,7 @@ JavaScript does not provide a native way of doing this, but it is possible to em
 
 Private methods aren't just useful for restricting access to code: they also provide a powerful way of managing your global namespace, keeping non-essential methods from cluttering up the public interface to your code.
 
-```javascriot
+```javascript
 var makeCounter = function() {
   var privateCounter = 0;
   function changeBy(val) {
